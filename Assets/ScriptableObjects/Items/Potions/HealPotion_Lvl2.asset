@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b657a463c2b93c49a34091d317052ed, type: 3}
+  m_Name: HealPotion_Lvl2
+  m_EditorClassIdentifier: Assembly-CSharp::BasicPotions
+  name: Healing Potion (Level 2)
+  description: Restores 50 health.
+  icon: 
+  maxStackSize: 3
+  duration: 0
+  amount: 50
+  type: 0
