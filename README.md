@@ -32,7 +32,7 @@ The project is currently in active development.
 
 ## Development
 
-This is a personal game development project.
+This is a graduation project.
 
 I am responsible for **all programming and gameplay systems**, including player systems, gameplay mechanics, item systems and game logic.
 
