@@ -8,6 +8,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Base Scenes/Blacksmith.unity
+    guid: 919d5906bd314224cac6c11691433719
+  - enabled: 1
+    path: Assets/Scenes/Base Scenes/City.unity
+    guid: 39c574e694592b341a0b02040eaa8c8c
+  - enabled: 1
+    path: Assets/Scenes/Base Scenes/Sorcerer.unity
+    guid: c7db37154ae61264a88e3a2f53238004
+  - enabled: 1
+    path: Assets/Scenes/Base Scenes/Throne Room.unity
+    guid: 8c74655f16caba946b93bd59d99b97db
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

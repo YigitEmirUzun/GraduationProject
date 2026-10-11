@@ -2,16 +2,35 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    public Transform player;
+
+
+    public Transform targetObj;
+    public Vector3 targetPos;
+
+    public bool canFollow = true ;
+    public float smoothSpeed = 5f;
 
     private void Awake()
     {
-        player = GameObject.Find("Player").transform;
+        targetObj = GameObject.Find("Player").transform;
+    }
+    private void Start()
+    {
+        if (canFollow) { transform.position = new Vector3(targetObj.position.x - 31, 20, targetObj.position.z - 31); }
+    }
+
+    private void Update()
+    {
+        targetPos = new Vector3(targetObj.position.x - 31, 20, targetObj.position.z - 31);
     }
 
     private void LateUpdate()
     {
-        transform.position = new Vector3(player.position.x + -30f, 18f , player.transform.position.z + -30f);
+        if (canFollow)
+        {
+            transform.position = Vector3.Lerp(transform.position, targetPos, smoothSpeed * Time.deltaTime);
+        }
+
     }
 
     
