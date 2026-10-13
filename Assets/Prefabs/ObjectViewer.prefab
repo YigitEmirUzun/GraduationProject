@@ -67,5 +67,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectViewer
   targetObject: {fileID: 0}
-  objTransformSmooth: 2
-  playerTransformSmooth: 5
+  objTransformSmooth: 0.8
+  playerTransformSmooth: 0.5

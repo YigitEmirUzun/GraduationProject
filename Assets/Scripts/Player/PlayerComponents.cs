@@ -4,4 +4,5 @@ public class PlayerComponents : MonoBehaviour
 {
     public PlayerHealth playerHealth;
     public PlayerController playerController;
+    public PlayerAttack playerAttack;
 }

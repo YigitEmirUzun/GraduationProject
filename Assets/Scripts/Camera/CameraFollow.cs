@@ -2,13 +2,15 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-
-
     public Transform targetObj;
     public Vector3 targetPos;
 
     public bool canFollow = true ;
-    public float smoothSpeed = 5f;
+    public float smoothTime = 0.5f;
+
+    private Vector3 velocity;
+
+    public Vector3 offset = new Vector3(-31, 17, -31);
 
     private void Awake()
     {
@@ -16,19 +18,26 @@ public class CameraFollow : MonoBehaviour
     }
     private void Start()
     {
-        if (canFollow) { transform.position = new Vector3(targetObj.position.x - 31, 20, targetObj.position.z - 31); }
+        if (canFollow) { transform.position = targetObj.position + offset; }
     }
 
     private void Update()
     {
-        targetPos = new Vector3(targetObj.position.x - 31, 20, targetObj.position.z - 31);
+        
     }
 
     private void LateUpdate()
     {
+        targetPos = targetObj.position + offset;
+
         if (canFollow)
         {
-            transform.position = Vector3.Lerp(transform.position, targetPos, smoothSpeed * Time.deltaTime);
+            transform.position = Vector3.SmoothDamp(
+            transform.position,
+            targetPos,
+            ref velocity,
+            smoothTime
+            );
         }
 
     }

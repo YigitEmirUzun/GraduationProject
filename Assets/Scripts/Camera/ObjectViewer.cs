@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class ObjectViewer : MonoBehaviour
 {
+    [Header("Ortalanacak obje")]
     public Transform targetObject;
     
     private CameraFollow cameraFollow;
     private Transform player;
 
-    public float objTransformSmooth = 1f;
-    public float playerTransformSmooth = 5f;
+    public float objTransformSmooth = 0.2f;
+    public float playerTransformSmooth = 0.5f;
 
     private void Awake()
     {
@@ -21,7 +22,7 @@ public class ObjectViewer : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             cameraFollow.targetObj = targetObject;
-            cameraFollow.smoothSpeed = objTransformSmooth;
+            cameraFollow.smoothTime = objTransformSmooth;
         }
     }
 
@@ -30,7 +31,7 @@ public class ObjectViewer : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             cameraFollow.targetObj = player;
-            cameraFollow.smoothSpeed = playerTransformSmooth;
+            cameraFollow.smoothTime = playerTransformSmooth;
         }
     }
 }
