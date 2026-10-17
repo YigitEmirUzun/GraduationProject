@@ -1,9 +1,12 @@
+using DG.Tweening;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
+    public bool hasCameraShaken = false;
     public Transform targetObj;
     public Vector3 targetPos;
+    public Camera mainCamera;
 
     public bool canFollow = true ;
     public float smoothTime = 0.5f;
@@ -14,7 +17,8 @@ public class CameraFollow : MonoBehaviour
 
     private void Awake()
     {
-        targetObj = GameObject.Find("Player").transform;
+        mainCamera = GetComponent<Camera>();
+        targetObj = GameObject.Find("Player").transform;    
     }
     private void Start()
     {
@@ -40,6 +44,16 @@ public class CameraFollow : MonoBehaviour
             );
         }
 
+    }
+
+    public void ShakeCamera()
+    {
+        if(!hasCameraShaken)
+        {
+            hasCameraShaken=true;
+            mainCamera.DOOrthoSize(mainCamera.orthographicSize - 0.2f, 0.05f).SetEase(Ease.OutBounce).SetLoops(2, LoopType.Yoyo);
+            mainCamera.DOShakePosition(0.05f, 0.3f, 2, 10).OnComplete(() => { hasCameraShaken = false; });
+        }
     }
 
     

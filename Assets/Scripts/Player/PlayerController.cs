@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    
     InputSystem_Actions inputAction;
 
     public static PlayerController instance { get; private set; }
@@ -11,9 +12,11 @@ public class PlayerController : MonoBehaviour
     private PlayerAttack playerAttack;
     public GameObject sprite;
 
+    public bool canMove = true;
+
     public float speed;
     public float currentSpeed;
-    Rigidbody rb;
+    public Rigidbody rb;
 
     Vector2 moveInput;
     private void Awake()
@@ -31,7 +34,6 @@ public class PlayerController : MonoBehaviour
         
         inputAction = new InputSystem_Actions();
 
-        //Componentslarý atama.
         rb = GetComponent<Rigidbody>();
         playerAttack = GetComponent<PlayerAttack>();
     }
@@ -47,7 +49,11 @@ public class PlayerController : MonoBehaviour
         // Hareket Sistemi   z eksenindeki hýza + 3 ekliyorum kamera açýsýndan dolayý.(Kameranýn açýsý yüzünden karakterin x ekseni hýzý daha fazla gibi gözüküyor)
         
         Vector3 direction = transform.right * moveInput.x * currentSpeed + transform.forward * moveInput.y * (currentSpeed + 3);
-        rb.linearVelocity = new Vector3(direction.x,rb.linearVelocity.y, direction.z);
+        if (canMove)
+        {
+            rb.linearVelocity = new Vector3(direction.x, rb.linearVelocity.y, direction.z);
+        }
+        else { rb.linearVelocity = Vector3.zero; }
     }
 
     private void OnEnable()

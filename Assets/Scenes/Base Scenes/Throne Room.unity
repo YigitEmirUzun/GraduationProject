@@ -1657,13 +1657,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5157723177957643436, guid: 96779c40ccbaf20439e11166ccab2da2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 5157723177957643436, guid: 96779c40ccbaf20439e11166ccab2da2, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
+    - target: {fileID: 1707011253049805558, guid: 96779c40ccbaf20439e11166ccab2da2, type: 3}
+      propertyPath: baseAttackDelay
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8064580000223869048, guid: 96779c40ccbaf20439e11166ccab2da2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1911,7 +1907,7 @@ Transform:
   m_GameObject: {fileID: 797207733}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.59, y: 2.87, z: 0.03619}
+  m_LocalPosition: {x: -12.16, y: 2.39, z: 0.03619}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3566,7 +3562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.7660377, g: 0.71408916, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.9794969, b: 0.6924528, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

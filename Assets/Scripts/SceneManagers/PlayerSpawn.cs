@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class PlayerSpawn : MonoBehaviour
 {
     
-    void Start()
+    void Awake()
     {
         GameObject player = GameObject.Find("Player");
 

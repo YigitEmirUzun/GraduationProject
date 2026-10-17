@@ -19,11 +19,15 @@ public class PlayerAttack : MonoBehaviour
     public GameObject attackHitbox;
     public Transform spawnPos;
 
+    public PlayerController playerController;
+
     
     public bool canAttack;
 
     private void Awake()
     {
+        playerController = GetComponent<PlayerController>();
+        
         currentDamage = baseDamage;
         currentKnockback = baseKnockback;
         currentCritChance = baseCritChance;
@@ -48,6 +52,7 @@ public class PlayerAttack : MonoBehaviour
         if (canAttack)
         {
             StartCoroutine(AttackSpeedRoutine());
+            StartCoroutine(StopMovementRoutine());
             float damageGiven = CalculatedDamage();
             GameObject hitbox = Instantiate(attackHitbox, spawnPos.position, Quaternion.Euler(0f, 45f, 0f));
             hitbox.GetComponent<AttackHitbox>().Initialize(damageGiven, currentKnockback);
@@ -59,6 +64,14 @@ public class PlayerAttack : MonoBehaviour
         canAttack = false;
         yield return new WaitForSeconds(currentAttackDelay);
         canAttack = true;
+    }
+
+    IEnumerator StopMovementRoutine()
+    {
+        playerController.canMove = false;
+        yield return new WaitForSeconds(0.3f);
+        playerController.canMove = true;
+
     }
 
 
