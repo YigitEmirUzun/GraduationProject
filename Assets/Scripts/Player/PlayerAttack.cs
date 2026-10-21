@@ -23,6 +23,7 @@ public class PlayerAttack : MonoBehaviour
 
     
     public bool canAttack;
+    public bool isCritical;
 
     private void Awake()
     {
@@ -37,7 +38,7 @@ public class PlayerAttack : MonoBehaviour
 
     public float CalculatedDamage()
     {
-        bool isCritical = Random.value < currentCritChance;
+        isCritical = Random.value < currentCritChance;
 
         float damage = currentDamage;
 
@@ -55,7 +56,8 @@ public class PlayerAttack : MonoBehaviour
             StartCoroutine(StopMovementRoutine());
             float damageGiven = CalculatedDamage();
             GameObject hitbox = Instantiate(attackHitbox, spawnPos.position, Quaternion.Euler(0f, 45f, 0f));
-            hitbox.GetComponent<AttackHitbox>().Initialize(damageGiven, currentKnockback);
+            hitbox.GetComponent<AttackHitbox>().Initialize(damageGiven, currentKnockback,isCritical);
+            isCritical = false;
         }
     }
 
@@ -69,7 +71,7 @@ public class PlayerAttack : MonoBehaviour
     IEnumerator StopMovementRoutine()
     {
         playerController.canMove = false;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.1f);
         playerController.canMove = true;
 
     }

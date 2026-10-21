@@ -5,6 +5,7 @@ public class AttackHitbox : MonoBehaviour
 {
     private float damage;
     private float knockback;
+    private bool isCritical = false;
 
     public float lifeTime;
 
@@ -16,10 +17,11 @@ public class AttackHitbox : MonoBehaviour
         mainCamera = GameObject.FindAnyObjectByType<CameraFollow>();
     }
 
-    public void Initialize(float damage, float knockback)
+    public void Initialize(float damage, float knockback, bool isCritical)
     {
         this.damage = damage;
         this.knockback = knockback;
+        this.isCritical = isCritical;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,7 +30,7 @@ public class AttackHitbox : MonoBehaviour
 
         if (damageable != null)
         {
-            damageable.TakeDamage(damage, knockback);
+            damageable.TakeDamage(damage, knockback,isCritical);
             StartCoroutine(SlowTimeRoutine());
             Debug.Log("Vurdun!");
         }
@@ -43,9 +45,9 @@ public class AttackHitbox : MonoBehaviour
 
     public IEnumerator SlowTimeRoutine()
     {
-        yield return new WaitForSeconds(0.005f);
+        yield return new WaitForSeconds(0.008f);
         Time.timeScale = 0.1f;
-        yield return new WaitForSeconds(0.003f);
+        yield return new WaitForSeconds(0.01f);
         Time.timeScale = 1f;
         mainCamera.ShakeCamera();
     }

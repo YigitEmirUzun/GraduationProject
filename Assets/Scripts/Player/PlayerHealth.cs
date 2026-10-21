@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     }
 
     // Hasar al. Can 0 ýn altýna inerse 0 a eþitle
-    public void TakeDamage(float damageAmount, float knockback)
+    public void TakeDamage(float damageAmount, float knockback, bool isCritical)
     {
         currentHealth = Mathf.Max(0,currentHealth - damageAmount);
         OnHealthChange?.Invoke(currentHealth, maxHealth, ChangeType.Decrease);

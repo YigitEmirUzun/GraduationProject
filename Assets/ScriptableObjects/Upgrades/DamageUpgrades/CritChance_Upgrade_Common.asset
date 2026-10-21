@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b38b7cec6b4d9d43b61eba826db7b0f, type: 3}
+  m_Name: CritChance_Upgrade_Common
+  m_EditorClassIdentifier: Assembly-CSharp::CritChanceUpgrade
+  maxStack: 4
+  upgradeName: 
+  description: Increases crit chance by 5%.
+  type: Damage
+  rarityWeigth: 60
+  rarity: Common
+  rarityColor: {r: 0.4117647, g: 0.4117647, b: 0.4117647, a: 1}
+  icon: {fileID: 0}
+  critChance: 0.05

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Globalization;
 using UnityEngine;
@@ -6,8 +7,7 @@ using UnityEngine.PlayerLoop;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    public EnemyHealthUI healthUI;
-    Rigidbody rb;
+    
     [Header("Enemy Stats")]
     public string enemyName;
     public int level;
@@ -15,6 +15,15 @@ public class Enemy : MonoBehaviour, IDamageable
     public float speed;
     public float baseDamage;
     public bool canFollow = true;
+    public bool shield = false;
+
+    [Header("Objects && Components")]
+    public GameObject attackHitbox;
+    public EnemyHealthUI healthUI;
+    Rigidbody rb;
+    public GameObject sprite;
+    public GameObject damageText;
+    public GameObject critText;
 
     [Header("AI Settings")]
     public float detectionRange = 15f;
@@ -25,6 +34,8 @@ public class Enemy : MonoBehaviour, IDamageable
     [Header("Dont Touch")]
     public float currentHealth;
     public float currentDamage;
+    protected float distance;
+    protected Vector3 direction;
 
     protected virtual void Awake()
     {
@@ -41,9 +52,10 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected virtual void Update()
     {
+        DirectionControl();
         if (!hasDetectedPlayer)
         {
-            float distance = Vector3.Distance(transform.position, player.position);
+            distance = Vector3.Distance(transform.position, player.position);
 
             if(distance <= detectionRange)
             {
@@ -60,14 +72,18 @@ public class Enemy : MonoBehaviour, IDamageable
             agent.SetDestination(transform.position);
         }
 
-        Debug.Log(agent.enabled);
+        direction = transform.position - player.position;
     }
 
 
-    public virtual void TakeDamage(float damage, float knockback)
+    public virtual void TakeDamage(float damage, float knockback, bool isCritical)
     {
         StartCoroutine(KnockbackRoutine(knockback, 0.2f));
         currentHealth -= damage;
+        GameObject newDamageText = Instantiate(damageText, transform.position + new Vector3(0,1,0), Quaternion.identity);
+        newDamageText.GetComponent<DamageText>().text = damage.ToString();
+
+        if (isCritical) { Instantiate(critText, transform.position + new Vector3(0.7f, 1.5f, 0), Quaternion.identity); }
 
         healthUI.UpgradeUI(baseHealth, currentHealth);
 
@@ -77,10 +93,28 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
+    public virtual void Attack(float damage) 
+    {
+    
+    }
+
+
     public virtual void Die()
     {
         Debug.Log($"{enemyName} adlý düþman öldürüldü.");
-        Destroy(gameObject);
+        Destroy(gameObject, 0.5f);
+    }
+
+    public virtual void DirectionControl()
+    {
+        if(direction.x - direction.z < 0)
+        {
+            sprite.transform.localScale = new Vector3(1,1,1);
+        }
+        else
+        {
+            sprite.transform.localScale = new Vector3(-1,1,1);
+        }
     }
 
     public IEnumerator KnockbackRoutine(float knockback, float time)

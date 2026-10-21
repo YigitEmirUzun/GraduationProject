@@ -21,9 +21,9 @@ public class EnemyHealthUI : MonoBehaviour
 
     public void UpgradeUI(float maxHealth, float currentHealth)
     {
-        healthBG.transform.DOPunchScale(Vector3.one * 0.4f, 0.3f);
-        healthImage.DOFillAmount(currentHealth / maxHealth, 0.2f).SetEase(Ease.OutBounce);
-        healthDelayImage.DOFillAmount(currentHealth / maxHealth, 0.1f).SetEase(Ease.OutBack).SetDelay(0.4f);
+        healthBG.transform.DOPunchScale(Vector3.one * 0.5f, 0.3f);
+        healthImage.DOFillAmount(currentHealth / maxHealth, 0.3f).SetEase(Ease.OutBounce);
+        healthDelayImage.DOFillAmount(currentHealth / maxHealth, 0.1f).SetEase(Ease.OutBack).SetDelay(0.3f);
         Debug.Log(healthImage.fillAmount);
     }
 }

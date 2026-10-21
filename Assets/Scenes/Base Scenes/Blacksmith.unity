@@ -3099,8 +3099,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 397020be059aa31408b85e340b8c6d7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraFollow
+  hasCameraShaken: 0
   targetObj: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
+  mainCamera: {fileID: 0}
   canFollow: 0
   smoothTime: 0.5
   offset: {x: -31, y: 17, z: -31}
