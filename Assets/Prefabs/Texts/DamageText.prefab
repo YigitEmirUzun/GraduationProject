@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageText
   text: 100
   textMeshPro: {fileID: 8930505524917243340}
-  duration: 3
+  duration: 2
 --- !u!1 &4675131482205730616
 GameObject:
   m_ObjectHideFlags: 0

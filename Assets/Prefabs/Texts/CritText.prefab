@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DamageText
   text: CRIT!
   textMeshPro: {fileID: 1365389896536493283}
-  duration: 3
+  duration: 2
 --- !u!1 &8368274355882689913
 GameObject:
   m_ObjectHideFlags: 0

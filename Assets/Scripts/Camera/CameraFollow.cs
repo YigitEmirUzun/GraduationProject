@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
     public Camera mainCamera;
 
     public bool canFollow = true ;
-    public float smoothTime = 0.5f;
+    public float smoothTime = 0.15f;
 
     private Vector3 velocity;
 
@@ -52,7 +52,7 @@ public class CameraFollow : MonoBehaviour
         {
             hasCameraShaken=true;
             mainCamera.DOOrthoSize(mainCamera.orthographicSize - 0.2f, 0.05f).SetEase(Ease.OutBounce).SetLoops(2, LoopType.Yoyo);
-            mainCamera.DOShakePosition(0.05f, 0.3f, 2, 10).OnComplete(() => { hasCameraShaken = false; });
+            mainCamera.DOShakePosition(0.08f, 0.5f, 2, 10).OnComplete(() => { hasCameraShaken = false; Time.timeScale = 1f; });
         }
     }
 

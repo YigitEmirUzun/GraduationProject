@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public float baseDamage;
     public bool canFollow = true;
     public bool shield = false;
+    private bool isDead = false;
 
     [Header("Objects && Components")]
     public GameObject attackHitbox;
@@ -63,7 +64,7 @@ public class Enemy : MonoBehaviour, IDamageable
             }
         }
 
-        if (canFollow && hasDetectedPlayer)
+        if (canFollow && hasDetectedPlayer && !isDead)
         {
             agent.SetDestination(player.position);
         }
@@ -80,10 +81,10 @@ public class Enemy : MonoBehaviour, IDamageable
     {
         StartCoroutine(KnockbackRoutine(knockback, 0.2f));
         currentHealth -= damage;
-        GameObject newDamageText = Instantiate(damageText, transform.position + new Vector3(0,1,0), Quaternion.identity);
+        GameObject newDamageText = Instantiate(damageText, transform.position + new Vector3(0,2,0), Quaternion.identity);
         newDamageText.GetComponent<DamageText>().text = damage.ToString();
 
-        if (isCritical) { Instantiate(critText, transform.position + new Vector3(0.7f, 1.5f, 0), Quaternion.identity); }
+        if (isCritical) { Instantiate(critText, transform.position + new Vector3(0.7f, 2f, 0), Quaternion.identity); }
 
         healthUI.UpgradeUI(baseHealth, currentHealth);
 
@@ -101,6 +102,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public virtual void Die()
     {
+        isDead = true;
         Debug.Log($"{enemyName} adlý düþman öldürüldü.");
         Destroy(gameObject, 0.5f);
     }

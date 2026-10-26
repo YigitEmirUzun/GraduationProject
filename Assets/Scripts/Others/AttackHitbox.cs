@@ -39,7 +39,7 @@ public class AttackHitbox : MonoBehaviour
     public IEnumerator DestroyRoutine()
     {
         yield return new WaitForSeconds(lifeTime);
-        Time.timeScale = 1.0f;
+        Time.timeScale = 1f;
         Destroy(gameObject);
     }
 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CritChance_Upgrade_Common
   m_EditorClassIdentifier: Assembly-CSharp::CritChanceUpgrade
   maxStack: 4
-  upgradeName: 
+  upgradeName: CritChance
   description: Increases crit chance by 5%.
   type: Damage
   rarityWeigth: 60

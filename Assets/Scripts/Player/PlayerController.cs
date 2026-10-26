@@ -74,9 +74,9 @@ public class PlayerController : MonoBehaviour
     {
         if(moveInput.x > 0)
         {
-            sprite.transform.localScale = new Vector3(5, 12, 5);
+            sprite.transform.localScale = new Vector3(1, 1, 1);
         }
-        else if(moveInput.x < 0) { sprite.transform.localScale = new Vector3(-5, 12, 5); }
+        else if(moveInput.x < 0) { sprite.transform.localScale = new Vector3(-1, 1, 1); }
     }
 
     private void OnAttack(InputAction.CallbackContext context)
