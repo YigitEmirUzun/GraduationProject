@@ -23,6 +23,8 @@ public class PlayerAttack : MonoBehaviour
 
     
     public bool canAttack;
+    public bool exploit = false;
+    public float exploitTime = 0.5f;
     public bool isCritical;
 
     private void Awake()
@@ -61,6 +63,14 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    public void Exploit()
+    {
+        if (!exploit)
+        {
+            StartCoroutine(ExploitRoutine());
+        }
+    }
+
     IEnumerator AttackSpeedRoutine()
     {
         canAttack = false;
@@ -74,6 +84,13 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         playerController.canMove = true;
 
+    }
+
+    IEnumerator ExploitRoutine()
+    {
+        exploit = true;
+        yield return new WaitForSeconds(exploitTime);
+        exploit = false;
     }
 
 

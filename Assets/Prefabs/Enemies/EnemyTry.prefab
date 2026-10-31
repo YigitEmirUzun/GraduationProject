@@ -219,7 +219,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 4
+  m_Speed: 6
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 1000
@@ -245,15 +245,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   enemyName: Deneme
   level: 1
-  baseHealth: 40
+  baseHealth: 30
   speed: 3
   baseDamage: 10
   canFollow: 1
   shield: 0
+  isDead: 0
+  exploitChance: 0.06
   attackHitbox: {fileID: 0}
   healthUI: {fileID: 0}
   sprite: {fileID: 5723492784256060916}
-  detectionRange: 15
+  damageText: {fileID: 4200996721507218550, guid: 47f0299cee91b1e448acc5718bddc496, type: 3}
+  critText: {fileID: 7796365060482930064, guid: 58ab38da5debd424c8db7597be7caa34, type: 3}
+  exploitButton: {fileID: 4113906742782693611, guid: 7bb255874534c084d875ce545f6fed73, type: 3}
+  detectionRange: 10
   currentHealth: 0
   currentDamage: 0
 --- !u!114 &7903096930777484771
@@ -295,9 +300,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!1 &4901478509628588851
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,13 +481,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5723492784256060916}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12278779, y: 0.12278779, z: -0.6963643, w: 0.6963643}
+  m_LocalRotation: {x: 0.17364816, y: 0, z: 0, w: 0.9848078}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6115672893736953399}
-  m_LocalEulerAnglesHint: {x: 20, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 20, y: 0, z: 0}
 --- !u!212 &3985234615426197876
 SpriteRenderer:
   serializedVersion: 2

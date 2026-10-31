@@ -46,13 +46,13 @@ public class CameraFollow : MonoBehaviour
 
     }
 
-    public void ShakeCamera()
+    public void ShakeCamera(float orthoSize = 0.15f, float punchDuration = 0.05f, float shakeStrength = 0.5f, int vibration = 2)
     {
         if(!hasCameraShaken)
         {
             hasCameraShaken=true;
-            mainCamera.DOOrthoSize(mainCamera.orthographicSize - 0.2f, 0.05f).SetEase(Ease.OutBounce).SetLoops(2, LoopType.Yoyo);
-            mainCamera.DOShakePosition(0.08f, 0.5f, 2, 10).OnComplete(() => { hasCameraShaken = false; Time.timeScale = 1f; });
+            mainCamera.DOOrthoSize(mainCamera.orthographicSize - orthoSize, punchDuration).SetEase(Ease.OutBounce).SetLoops(2, LoopType.Yoyo);
+            mainCamera.DOShakePosition(0.08f, shakeStrength, vibration, 10).OnComplete(() => { hasCameraShaken = false; Time.timeScale = 1f; });
         }
     }
 

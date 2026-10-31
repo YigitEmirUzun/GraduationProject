@@ -7,7 +7,8 @@ using UnityEngine.PlayerLoop;
 
 public class Enemy : MonoBehaviour, IDamageable
 {
-    
+    public System.Action OnDeath;
+
     [Header("Enemy Stats")]
     public string enemyName;
     public int level;
@@ -16,7 +17,8 @@ public class Enemy : MonoBehaviour, IDamageable
     public float baseDamage;
     public bool canFollow = true;
     public bool shield = false;
-    private bool isDead = false;
+    public bool isDead = false;
+    public float exploitChance;
 
     [Header("Objects && Components")]
     public GameObject attackHitbox;
@@ -25,6 +27,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public GameObject sprite;
     public GameObject damageText;
     public GameObject critText;
+    public GameObject exploitButton;
 
     [Header("AI Settings")]
     public float detectionRange = 15f;
@@ -40,6 +43,7 @@ public class Enemy : MonoBehaviour, IDamageable
 
     protected virtual void Awake()
     {
+        
         healthUI = GetComponent<EnemyHealthUI>();
         rb = GetComponent<Rigidbody>();
         player = GameObject.Find("Player").transform;
@@ -86,9 +90,11 @@ public class Enemy : MonoBehaviour, IDamageable
 
         if (isCritical) { Instantiate(critText, transform.position + new Vector3(0.7f, 2f, 0), Quaternion.identity); }
 
+        ExploitChance();
+
         healthUI.UpgradeUI(baseHealth, currentHealth);
 
-        if (currentHealth <= 0)
+        if (currentHealth <= 0 && !isDead)
         {
             Die();
         }
@@ -99,11 +105,21 @@ public class Enemy : MonoBehaviour, IDamageable
     
     }
 
+    public void ExploitChance()
+    {
+        if(Random.value < exploitChance && !isDead)
+        {
+            GameObject newExploitButton = Instantiate(exploitButton, transform.position, Quaternion.identity);
+            newExploitButton.GetComponent<ExploitManager>().enemyCs = this;
+        }
+    }
+
 
     public virtual void Die()
     {
         isDead = true;
         Debug.Log($"{enemyName} adlý düþman öldürüldü.");
+        OnDeath?.Invoke();
         Destroy(gameObject, 0.5f);
     }
 

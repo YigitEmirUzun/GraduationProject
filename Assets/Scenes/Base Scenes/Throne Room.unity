@@ -2619,6 +2619,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FadeUICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 4615133799315089419, guid: d1d0ee424e94fc648883fbebbfddd98a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8512713405365909180, guid: d1d0ee424e94fc648883fbebbfddd98a, type: 3}
       propertyPath: m_Pivot.x
       value: 0

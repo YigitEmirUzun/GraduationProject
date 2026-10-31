@@ -61,26 +61,33 @@ public class PlayerController : MonoBehaviour
         inputAction.Enable();
 
         inputAction.Player.Attack.performed += OnAttack;
+        inputAction.Player.Exploit.performed += OnExploit;
     }
 
     private void OnDisable()
     {
         inputAction.Player.Attack.performed -= OnAttack;
+        inputAction.Player.Exploit.performed -= OnExploit;
 
         inputAction.Disable();      
     }
 
     private void XDirection()
     {
-        if(moveInput.x > 0)
+        if(moveInput.x > 0.5)
         {
             sprite.transform.localScale = new Vector3(1, 1, 1);
         }
-        else if(moveInput.x < 0) { sprite.transform.localScale = new Vector3(-1, 1, 1); }
+        else if(moveInput.x < -0.5) { sprite.transform.localScale = new Vector3(-1, 1, 1); }
     }
 
     private void OnAttack(InputAction.CallbackContext context)
     {
         playerAttack.Attack();
+    }
+
+    private void OnExploit(InputAction.CallbackContext context)
+    {
+        playerAttack.Exploit();
     }
 }
