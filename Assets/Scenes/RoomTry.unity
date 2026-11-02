@@ -1249,7 +1249,7 @@ MonoBehaviour:
   - {fileID: 3840798962924511275, guid: 469bc88946930e84fba33009bac76f6f, type: 3}
   maxEnemyCount: 9
   minEnemyCount: 3
-  maxWaveCount: 6
+  maxWaveCount: 8
   minWaveCount: 3
   remainingEnemies: 0
   waveCount: 0
@@ -1818,6 +1818,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1707011253049805558, guid: 96779c40ccbaf20439e11166ccab2da2, type: 3}
+      propertyPath: exploitTime
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707011253049805558, guid: 96779c40ccbaf20439e11166ccab2da2, type: 3}
+      propertyPath: baseKnockback
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1707011253049805558, guid: 96779c40ccbaf20439e11166ccab2da2, type: 3}
+      propertyPath: baseAttackDelay
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3809449611723497460, guid: 96779c40ccbaf20439e11166ccab2da2, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3809449611723497460, guid: 96779c40ccbaf20439e11166ccab2da2, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3809449611723497460, guid: 96779c40ccbaf20439e11166ccab2da2, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3809449611723497460, guid: 96779c40ccbaf20439e11166ccab2da2, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 6ad49ad0ae398cf43be5a26cd8b051be, type: 2}
     - target: {fileID: 8064580000223869048, guid: 96779c40ccbaf20439e11166ccab2da2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.5491338

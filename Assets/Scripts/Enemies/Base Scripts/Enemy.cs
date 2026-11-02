@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.PlayerLoop;
@@ -8,6 +9,9 @@ using UnityEngine.PlayerLoop;
 public class Enemy : MonoBehaviour, IDamageable
 {
     public System.Action OnDeath;
+
+    private SpriteRenderer spriteRenderer;
+    private MaterialPropertyBlock propertyBlock;
 
     [Header("Enemy Stats")]
     public string enemyName;
@@ -53,11 +57,14 @@ public class Enemy : MonoBehaviour, IDamageable
         baseHealth = baseHealth * level * 2f;
         baseDamage = baseDamage * level * 2f;
         agent.updateRotation = false;
+
+        propertyBlock = new MaterialPropertyBlock();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     protected virtual void Update()
     {
-        DirectionControl();
+        
         if (!hasDetectedPlayer)
         {
             distance = Vector3.Distance(transform.position, player.position);
@@ -71,6 +78,7 @@ public class Enemy : MonoBehaviour, IDamageable
         if (canFollow && hasDetectedPlayer && !isDead)
         {
             agent.SetDestination(player.position);
+            DirectionControl();
         }
         else 
         {
@@ -83,20 +91,24 @@ public class Enemy : MonoBehaviour, IDamageable
 
     public virtual void TakeDamage(float damage, float knockback, bool isCritical)
     {
-        StartCoroutine(KnockbackRoutine(knockback, 0.2f));
-        currentHealth -= damage;
-        GameObject newDamageText = Instantiate(damageText, transform.position + new Vector3(0,2,0), Quaternion.identity);
-        newDamageText.GetComponent<DamageText>().text = damage.ToString();
-
-        if (isCritical) { Instantiate(critText, transform.position + new Vector3(0.7f, 2f, 0), Quaternion.identity); }
-
-        ExploitChance();
-
-        healthUI.UpgradeUI(baseHealth, currentHealth);
-
-        if (currentHealth <= 0 && !isDead)
+        if(!isDead)
         {
-            Die();
+            StartCoroutine(KnockbackRoutine(knockback, 0.2f));
+            StartCoroutine(FlashEffectRoutine());
+            currentHealth -= damage;
+            GameObject newDamageText = Instantiate(damageText, transform.position + new Vector3(0, 2, 0), Quaternion.identity);
+            newDamageText.GetComponent<DamageText>().text = damage.ToString();
+
+            if (isCritical) { Instantiate(critText, transform.position + new Vector3(0.7f, 2f, 0), Quaternion.identity); }
+
+            ExploitChance();
+
+            healthUI.UpgradeUI(baseHealth, currentHealth);
+
+            if (currentHealth <= 0)
+            {
+                Die();
+            }
         }
     }
 
@@ -135,6 +147,22 @@ public class Enemy : MonoBehaviour, IDamageable
         }
     }
 
+    public void SetFlash(float flashAmount)
+    {
+        spriteRenderer.GetPropertyBlock(propertyBlock);
+
+        propertyBlock.SetFloat("_HitFlashAmount", flashAmount);
+
+        spriteRenderer.SetPropertyBlock(propertyBlock);
+    }
+
+    public IEnumerator FlashEffectRoutine()
+    {
+        SetFlash(1);
+        yield return new WaitForSeconds(0.08f);
+        SetFlash(0);
+    }
+
     public IEnumerator KnockbackRoutine(float knockback, float time)
     {
         canFollow = false;
@@ -142,6 +170,7 @@ public class Enemy : MonoBehaviour, IDamageable
         rb.AddForce(new Vector3(distance.x * knockback, 0, distance.z * knockback), ForceMode.Impulse);
         yield return new WaitForSeconds(time);
         rb.linearVelocity = Vector3.zero;
+        yield return new WaitForSeconds(0.2f);
         canFollow = true;
     }
 }

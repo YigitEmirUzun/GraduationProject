@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b38b7cec6b4d9d43b61eba826db7b0f, type: 3}
   m_Name: CritChance_Upgrade_Common
   m_EditorClassIdentifier: Assembly-CSharp::CritChanceUpgrade
-  maxStack: 4
+  maxStack: 1
   upgradeName: CritChance
   description: Increases crit chance by 5%.
   type: Damage

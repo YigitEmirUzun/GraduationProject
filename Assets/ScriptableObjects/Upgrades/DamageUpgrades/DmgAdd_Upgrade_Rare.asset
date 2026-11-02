@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c145116192c0b1e459585b1ceb3ebd49, type: 3}
   m_Name: DmgAdd_Upgrade_Rare
   m_EditorClassIdentifier: Assembly-CSharp::DamageAddUpgrade
-  maxStack: 2
+  maxStack: 1
   upgradeName: AddDamage_2
   description: Increases damage by 30.
   type: Damage
@@ -20,4 +20,4 @@ MonoBehaviour:
   rarity: Rare
   rarityColor: {r: 0, g: 0.60886025, b: 1, a: 1}
   icon: {fileID: 0}
-  addDamage: 20
+  addDamage: 30

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c145116192c0b1e459585b1ceb3ebd49, type: 3}
   m_Name: DmgAdd_Upgrade_Common
   m_EditorClassIdentifier: Assembly-CSharp::DamageAddUpgrade
-  maxStack: 2
+  maxStack: 1
   upgradeName: AddDamage_1
   description: Increases damage by 10.
   type: Damage

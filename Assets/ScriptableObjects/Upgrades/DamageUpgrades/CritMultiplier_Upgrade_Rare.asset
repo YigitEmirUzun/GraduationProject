@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d2b094ce85e3174fb6d9ada3f49e955, type: 3}
   m_Name: CritMultiplier_Upgrade_Rare
   m_EditorClassIdentifier: Assembly-CSharp::CritMultiplierUpgrade
-  maxStack: 4
+  maxStack: 1
   upgradeName: CritMult
   description: Increases critic damage multiplier by 0.5.
   type: Damage
