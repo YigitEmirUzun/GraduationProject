@@ -1,5 +1,6 @@
 using DG.Tweening;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,10 @@ public class HealthUIManager : MonoBehaviour
 
     public Image manaImage;
 
+    public TextMeshProUGUI soulText;
+
     public PlayerHealth playerHealth;
+
 
 
     private void Awake()
@@ -56,6 +60,11 @@ public class HealthUIManager : MonoBehaviour
     private void UpdateManaUI(float currentMana, float maxMana, PlayerHealth.ChangeType changeType)
     {
         healthImage.DOFillAmount(currentMana / maxMana, 0.1f).SetEase(Ease.OutCubic);
+    }
+
+    public void UpdateSoulsUI(int soulCount)
+    {
+        soulText.text = $"x{soulCount}";
     }
 
 }

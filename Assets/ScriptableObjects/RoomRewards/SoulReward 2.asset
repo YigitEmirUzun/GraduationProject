@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7a4a690cc59ade42a9a5ee2c41c3a8a, type: 3}
+  m_Name: SoulReward 2
+  m_EditorClassIdentifier: Assembly-CSharp::SoulReward
+  rewardName: SoulReward
+  description: Gain 2000 souls.
+  godName: Death
+  rarityWeight: 5
+  godImage: {fileID: 21300000, guid: 20d6704216a4c604d9e66df154486398, type: 3}
+  soulCount: 2000

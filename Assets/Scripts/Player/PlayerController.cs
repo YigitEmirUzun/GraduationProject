@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance { get; private set; }
 
     private PlayerAttack playerAttack;
+    private PlayerResources playerResources;
     public GameObject sprite;
 
     public bool canMove = true;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         playerAttack = GetComponent<PlayerAttack>();
+        playerResources = GetComponent<PlayerResources>();
     }
 
     void Update()
@@ -46,14 +48,13 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Hareket Sistemi   z eksenindeki hýza + 3 ekliyorum kamera açýsýndan dolayý.(Kameranýn açýsý yüzünden karakterin x ekseni hýzý daha fazla gibi gözüküyor)
+        // Hareket Sistemi [z eksenindeki hýza + 3 ekliyorum kamera açýsýndan dolayý.](Kameranýn açýsý yüzünden karakterin x ekseni hýzý daha fazla gibi gözüküyor)
         
         Vector3 direction = transform.right * moveInput.x * currentSpeed + transform.forward * moveInput.y * (currentSpeed + 3);
         if (canMove)
         {
             rb.linearVelocity = new Vector3(direction.x, rb.linearVelocity.y, direction.z);
         }
-        else { rb.linearVelocity = Vector3.zero; }
     }
 
     private void OnEnable()
@@ -62,12 +63,16 @@ public class PlayerController : MonoBehaviour
 
         inputAction.Player.Attack.performed += OnAttack;
         inputAction.Player.Exploit.performed += OnExploit;
+        inputAction.Player.Ulti.performed += OnUlti;
+        inputAction.Player.Special.performed += OnSpecial;
     }
 
     private void OnDisable()
     {
         inputAction.Player.Attack.performed -= OnAttack;
         inputAction.Player.Exploit.performed -= OnExploit;
+        inputAction.Player.Ulti.performed -= OnUlti;
+        inputAction.Player.Special.performed -= OnSpecial;
 
         inputAction.Disable();      
     }
@@ -81,6 +86,7 @@ public class PlayerController : MonoBehaviour
         else if(moveInput.x < -0.5) { sprite.transform.localScale = new Vector3(-1, 1, 1); }
     }
 
+    // Button Functions
     private void OnAttack(InputAction.CallbackContext context)
     {
         playerAttack.Attack();
@@ -89,5 +95,15 @@ public class PlayerController : MonoBehaviour
     private void OnExploit(InputAction.CallbackContext context)
     {
         playerAttack.Exploit();
+    }
+
+    private void OnUlti(InputAction.CallbackContext context)
+    {
+        playerResources.UseUlti();
+    }
+
+    private void OnSpecial(InputAction.CallbackContext context)
+    {
+        playerResources.UseSpecial();
     }
 }

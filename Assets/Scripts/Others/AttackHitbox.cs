@@ -46,8 +46,8 @@ public class AttackHitbox : MonoBehaviour
     public IEnumerator SlowTimeRoutine()
     {
         yield return new WaitForSeconds(0.008f);
-        Time.timeScale = 0.1f;
-        yield return new WaitForSeconds(0.01f);
+        Time.timeScale = 0.001f;
+        yield return new WaitForSeconds(0.0001f);
         Time.timeScale = 1f;
         mainCamera.ShakeCamera();
     }

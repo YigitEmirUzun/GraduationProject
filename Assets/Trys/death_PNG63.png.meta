@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e52ad8cadcf7df54f98e0b5664cafa33
+guid: 20d6704216a4c604d9e66df154486398
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5776421600631150107
-    second: Untitled_Artwork-3_0
+      213: 1227775736992776042
+    second: death_PNG63_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Untitled_Artwork-3_0
+      name: death_PNG63_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 768
-        height: 768
+        width: 2893
+        height: 4092
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5e9ac75b82706dfa0800000000000000
-      internalID: -5776421600631150107
+      spriteID: a6f3c4b178fe90110800000000000000
+      internalID: 1227775736992776042
       vertices: []
       indices: 
       edges: []

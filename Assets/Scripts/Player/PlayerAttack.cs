@@ -54,8 +54,8 @@ public class PlayerAttack : MonoBehaviour
     {
         if (canAttack)
         {
-            StartCoroutine(AttackSpeedRoutine());
             StartCoroutine(StopMovementRoutine());
+            StartCoroutine(AttackSpeedRoutine());
             float damageGiven = CalculatedDamage();
             GameObject hitbox = Instantiate(attackHitbox, spawnPos.position, Quaternion.Euler(0f, 45f, 0f));
             hitbox.GetComponent<AttackHitbox>().Initialize(damageGiven, currentKnockback,isCritical);
@@ -81,6 +81,8 @@ public class PlayerAttack : MonoBehaviour
     IEnumerator StopMovementRoutine()
     {
         playerController.canMove = false;
+        playerController.rb.linearVelocity = Vector3.zero;
+        playerController.rb.AddForce(transform.right * playerController.sprite.transform.localScale.x * 26, ForceMode.Impulse);
         yield return new WaitForSeconds(0.1f);
         playerController.canMove = true;
 

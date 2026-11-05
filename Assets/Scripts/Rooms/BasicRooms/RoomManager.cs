@@ -23,6 +23,8 @@ public class RoomManager : MonoBehaviour
 
     private bool isChangingWave = false;
 
+    public RewardManager rewardManager;
+
 
     private void Awake()
     {
@@ -30,6 +32,7 @@ public class RoomManager : MonoBehaviour
         enemyList = new List<GameObject>();
         waveCount = Random.Range(minWaveCount, maxWaveCount);
         currentWave = 1;
+        rewardManager = FindFirstObjectByType<RewardManager>();
     }
 
     private void Start()
@@ -93,6 +96,8 @@ public class RoomManager : MonoBehaviour
         else
         {
             Debug.Log("Oda Bitti");
+            yield return new WaitForSeconds(2f);
+            rewardManager.ShowRewards();
         }
     }
 

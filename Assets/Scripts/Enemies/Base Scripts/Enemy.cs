@@ -166,6 +166,7 @@ public class Enemy : MonoBehaviour, IDamageable
     public IEnumerator KnockbackRoutine(float knockback, float time)
     {
         canFollow = false;
+        rb.linearVelocity = Vector3.zero;
         Vector3 distance = (transform.position - player.position).normalized;
         rb.AddForce(new Vector3(distance.x * knockback, 0, distance.z * knockback), ForceMode.Impulse);
         yield return new WaitForSeconds(time);

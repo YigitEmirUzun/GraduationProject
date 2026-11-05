@@ -6,7 +6,7 @@ public abstract class Upgrade : ScriptableObject
     public string upgradeName;
     [TextArea] public string description;
     public string type;
-    public float rarityWeigth;
+    public float rarityWeight;
     public string rarity;
     public Color rarityColor;
 

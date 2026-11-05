@@ -51,8 +51,8 @@ public class CameraFollow : MonoBehaviour
         if(!hasCameraShaken)
         {
             hasCameraShaken=true;
-            mainCamera.DOOrthoSize(mainCamera.orthographicSize - orthoSize, punchDuration).SetEase(Ease.OutBounce).SetLoops(2, LoopType.Yoyo);
-            mainCamera.DOShakePosition(0.08f, shakeStrength, vibration, 10).OnComplete(() => { hasCameraShaken = false; Time.timeScale = 1f; });
+            mainCamera.DOOrthoSize(mainCamera.orthographicSize - orthoSize, punchDuration).SetEase(Ease.OutBounce).SetLoops(2, LoopType.Yoyo).SetUpdate(true);
+            mainCamera.DOShakePosition(0.08f, shakeStrength, vibration, 10).SetUpdate(true).OnComplete(() => { hasCameraShaken = false; Time.timeScale = 1f; });
         }
     }
 
