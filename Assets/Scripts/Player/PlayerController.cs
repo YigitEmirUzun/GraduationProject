@@ -43,7 +43,10 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         moveInput = inputAction.Player.Move.ReadValue<Vector2>();
-        XDirection();
+        if (canMove)
+        {
+            XDirection();
+        }
     }
 
     private void FixedUpdate()

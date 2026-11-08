@@ -20,6 +20,7 @@ public class PlayerAttack : MonoBehaviour
     public Transform spawnPos;
 
     public PlayerController playerController;
+    public SwordFollow swordFollow;
 
     
     public bool canAttack;
@@ -30,6 +31,7 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         playerController = GetComponent<PlayerController>();
+        swordFollow = FindAnyObjectByType<SwordFollow>();
         
         currentDamage = baseDamage;
         currentKnockback = baseKnockback;
@@ -54,6 +56,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (canAttack)
         {
+            swordFollow.Attack();
             StartCoroutine(StopMovementRoutine());
             StartCoroutine(AttackSpeedRoutine());
             float damageGiven = CalculatedDamage();
@@ -62,6 +65,8 @@ public class PlayerAttack : MonoBehaviour
             isCritical = false;
         }
     }
+
+    
 
     public void Exploit()
     {

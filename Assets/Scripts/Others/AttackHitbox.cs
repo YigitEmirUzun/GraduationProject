@@ -31,8 +31,8 @@ public class AttackHitbox : MonoBehaviour
         if (damageable != null)
         {
             damageable.TakeDamage(damage, knockback,isCritical);
-            StartCoroutine(SlowTimeRoutine());
-            Debug.Log("Vurdun!");
+            mainCamera.ShakeCamera();
+            mainCamera.SlowTime();
         }
     }
 
@@ -43,12 +43,5 @@ public class AttackHitbox : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public IEnumerator SlowTimeRoutine()
-    {
-        yield return new WaitForSeconds(0.008f);
-        Time.timeScale = 0.001f;
-        yield return new WaitForSeconds(0.0001f);
-        Time.timeScale = 1f;
-        mainCamera.ShakeCamera();
-    }
+    
 }

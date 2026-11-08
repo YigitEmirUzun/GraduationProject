@@ -4,19 +4,20 @@ using UnityEngine.UI;
 
 public class PlayerSpawn : MonoBehaviour
 {
-    
-    void Awake()
+    private GameObject playerSpawnPoint;
+    private GameObject player;
+
+    private void Awake()
     {
-        GameObject player = GameObject.Find("Player");
+        player = GameObject.Find("Player");
+        if (player == null) { Debug.Log("oyuncu bulunamadý!"); }
 
-        GameObject spawnPoint = GameObject.Find(SceneTransition.spawnPoint);
+        playerSpawnPoint = GameObject.Find(SceneTransition.spawnPoint);
+        if (playerSpawnPoint == null) { Debug.Log("spawn noktasý bulunamadý!"); }
 
-        player.transform.position = spawnPoint.transform.position;
+        Debug.Log(SceneTransition.spawnPoint);
+
+        player.GetComponent<Rigidbody>().position = playerSpawnPoint.transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

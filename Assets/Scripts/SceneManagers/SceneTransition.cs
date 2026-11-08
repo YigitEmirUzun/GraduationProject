@@ -17,18 +17,19 @@ public class SceneTransition : MonoBehaviour , IInteractable
     [Header("Geçilen Sahnedeki Spawn Point Adý(String)")]
     public string nextSceneSpawnPoint;
    
-    void Start()
+    void Awake()
     {
         fadeUI = GameObject.Find("FadeUI").GetComponent<Image>();
     }
 
     public void Interact()
     {
+        spawnPoint = nextSceneSpawnPoint;
         LoadScene();
     }
     public void LoadScene()
     {
-        spawnPoint = nextSceneSpawnPoint;
+        
 
         fadeUI.DOFade(1f, 0.4f).OnComplete(() => {SceneManager.LoadScene(sceneToLoad);});
     }
