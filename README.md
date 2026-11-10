@@ -1,4 +1,4 @@
-# [Graduation Project]
+# [Deicide]
 
 A roguelite action RPG featuring 2D characters in a 3D environment, developed in Unity.
 
@@ -12,15 +12,43 @@ The project is currently in active development.
 
 ## Features
 
-- 2D characters in a 3D environment
-- Roguelite gameplay
-- Player movement system
-- Health and mana system
-- Health and mana potions
-- Max health and mana upgrades
-- ScriptableObject-based item system
-- Player component architecture
-- Character progression systems
+**Gameplay & Combat**
+- 2D characters in a 3D environment.
+- Roguelite gameplay.
+- Player movement system.
+- Health and mana system.
+- Enemy AI with NavMesh-based player tracking.
+- Enemy attack preparation and interruption system.
+- Exploit mechanic.
+- Critical hit system.
+- Floating damage numbers and critical hit indicators.
+- Camera shake effects during combat.
+- Enemy health UI.
+
+**Progression & Upgrades**
+- Health and mana potions.
+- Max health and mana upgrades.
+- Room-end reward selection system.
+- ScriptableObject-based upgrade system.
+- Player resource management.
+- Soul collection system.
+- Unlocked special attacks and ultimate abilities tracking.
+- ScriptableObject-based item system.
+- Player component architecture.
+
+**Enemy & Room Systems**
+- Randomized enemy wave generation.
+- Randomized wave counts per room.
+- Randomized enemy types and spawn amounts.
+- Enemy spawn particle effects.
+- Enemy attack hitboxes.
+
+**Environment & Visuals**
+- First biome environment built using Unity Terrain.
+- Sorcerer room with completed 3D models and visuals.
+- Custom Shader Graph for character lighting.
+- Outline Shader Graph for 3D objects.
+- Custom lighting adjustments.
 
 ## Technologies
 
@@ -28,15 +56,18 @@ The project is currently in active development.
 - C#
 - Unity Input System
 - ScriptableObjects
+- Unity NavMesh
+- Unity Shader Graph
+- Unity Terrain
+- Spine Unity Runtime
 - Git & GitHub
 
 ## Development
 
 This is a graduation project.
 
-I am responsible for **all programming and gameplay systems**, including player systems, gameplay mechanics, item systems and game logic.
-
+I am responsible for **all programming and gameplay systems**, including player systems, enemy AI, combat mechanics, progression systems, UI, room management and game logic.
 
 ## Project Status
 
-In Development
+**In Development**
